@@ -1,6 +1,6 @@
 import {Outlet, Link, useLocation, NavLink} from 'react-router-dom'
 
-const Layout = () => { 
+function Layout() { 
   const location = useLocation()
   // console.log(location);
   return (
@@ -21,7 +21,7 @@ const Layout = () => {
             </NavLink> */}
           </nav>
         </aside>
-        <main className='md:w-3/4 md:h-screen overflow-scroll'>
+        <main className='md:w-3/4 md:h-screen overflow-scroll p-5'>
           <Outlet/>
         </main>
     </div>
