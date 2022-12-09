@@ -1,6 +1,7 @@
-import { useNavigate, Form, useActionData } from 'react-router-dom'
+import { useNavigate, Form, useActionData, redirect } from 'react-router-dom'
 import Formulario from '../components/Formulario'
 import Error from '../components/Error'
+import { agregarCliente } from '../data/clientes'
 
 export async function action({request}) {
   const formData = await request.formData()
@@ -20,6 +21,9 @@ export async function action({request}) {
   if(Object.keys(errores).length){
     return errores
   }
+
+  await agregarCliente(datos)
+  return redirect('/')
 }
 
 function NuevoCliente() {
@@ -32,7 +36,7 @@ function NuevoCliente() {
       <div className="flex justify-end">
         <button 
           className="bg-blue-800 text-white px-3 py-1 font-bold uppercase mt-5"
-          onClick={() => navigate('/')}
+          onClick={() => navigate(-1)}
         >
           Volver
         </button>
